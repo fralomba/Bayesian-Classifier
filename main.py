@@ -4,7 +4,7 @@ import cleanDataset
 
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.model_selection import KFold, cross_val_score
-from sklearn.metrics import roc_curve, auc, precision_score, recall_score
+from sklearn.metrics import roc_curve, auc
 
 import matplotlib.pyplot as plt
 
@@ -123,23 +123,3 @@ plt.ylabel('True Positive Rate')
 plt.title('R.O.C.')
 plt.legend(loc="lower right")
 plt.show()
-
-
-'''
-                            # --------------------------------Compute precision-----------------------------
-
-
-
-precision = precision_score(y_cerevisiae, predCer)
-print('-----------------------------------------------')
-print(precision)
-
-
-
-                            #-----------------------------------Compute recall------------------------------
-
-
-recall = recall_score(y_cerevisiae, predCer)
-print('-----------------------------------------------')
-print(recall)
-'''

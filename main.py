@@ -3,7 +3,7 @@ import pandas as pd
 import cleanDataset
 
 from sklearn.naive_bayes import BernoulliNB
-from sklearn.model_selection import KFold, cross_val_score
+from sklearn.model_selection import KFold, cross_val_score, StratifiedKFold
 from sklearn.metrics import roc_curve, auc
 
 import matplotlib.pyplot as plt
@@ -68,7 +68,7 @@ X_mikatae = np.asarray(X_mikatae).transpose()
 
 BerNB = BernoulliNB(alpha = 0.1)
 
-kfold = KFold(n_splits = 10, shuffle=True)
+kfold = StratifiedKFold(n_splits = 10, shuffle=True)
 prediction_cerevisiae = cross_val_score(BerNB, X_cerevisiae, y_cerevisiae, cv = kfold)
 
 print('10-fold cross-validation prediction cerevisiae score:')
@@ -121,5 +121,5 @@ plt.ylim([0.0, 1.0])
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('R.O.C.')
-#plt.legend(loc="lower right")
+plt.legend(loc="lower right")
 plt.show()

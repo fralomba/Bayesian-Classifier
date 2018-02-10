@@ -19,6 +19,8 @@ Some features in *S.Mikatae* contained unknown values, that have been changed to
 ## Results
 Both classification and ROC curve computation seem to be consistent with the compared [reference](http://genome.cshlp.org/content/16/9/1126).
 
+![ROC](/img/roc.png)
+
 ## Requirements
 | Software                                                 | Version         | Required |
 | ---------------------------------------------------------|-----------------| ---------|

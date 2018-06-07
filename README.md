@@ -11,7 +11,7 @@ This project aims to predict through Bernoulli Naive Bayes algorithm the essenti
 3. The script will output *S.Mikatae* dataset classification results and plot the ROC curve of the prediction about *S.Cerevisiae* dataset.
 
 ## Implementation
-The datasets have been read with [*Pandas*](https://pandas.pydata.org/) and then converted in [*Numpy*](http://www.numpy.org) arrays. After they have been discretized and one-hot-encoded.
+The datasets have been read with [*Pandas*](https://pandas.pydata.org/) and then converted in [*Numpy*](http://www.numpy.org) arrays. After they have been discretized.
 Some features in *S.Mikatae* contained unknown values, that have been changed to '0'.
 
 **10-fold cross validation** has been used to evaluate the classifier's accuracy.

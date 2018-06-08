@@ -8,19 +8,19 @@ def encodeRealColumns(columns_to_be_encoded):
     deltas = [max_real_columns[i] - min_real_columns[i] for i in range(len(max_real_columns))]
     steps = [delta/4 for delta in deltas]
 
-    oneHotEncoded1on4s = []
-    oneHotEncoded2on4s = []
-    oneHotEncoded3on4s = []
-    oneHotEncoded4on4s = []
+    encoded1on4s = []
+    encoded2on4s = []
+    encoded3on4s = []
+    encoded4on4s = []
 
 
     for i in range(columns_to_be_encoded.shape[1]):
-        oneHotEncoded1on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i], columns_to_be_encoded[:, i] < min_real_columns[i] + steps[i]))
-        oneHotEncoded2on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i] + steps[i], columns_to_be_encoded[:, i] < min_real_columns[i] + 2*steps[i]))
-        oneHotEncoded3on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i] + 2*steps[i], columns_to_be_encoded[:, i] < min_real_columns[i] + 3*steps[i]))
-        oneHotEncoded4on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i] + 3*steps[i], columns_to_be_encoded[:, i] < min_real_columns[i] + 4*steps[i]))
+        encoded1on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i], columns_to_be_encoded[:, i] < min_real_columns[i] + steps[i]))
+        encoded2on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i] + steps[i], columns_to_be_encoded[:, i] < min_real_columns[i] + 2*steps[i]))
+        encoded3on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i] + 2*steps[i], columns_to_be_encoded[:, i] < min_real_columns[i] + 3*steps[i]))
+        encoded4on4s.append(np.logical_and(columns_to_be_encoded[:, i] >= min_real_columns[i] + 3*steps[i], columns_to_be_encoded[:, i] < min_real_columns[i] + 4*steps[i]))
 
-    OneHotEncoding = np.asarray([oneHotEncoded1on4s,oneHotEncoded2on4s,oneHotEncoded3on4s,oneHotEncoded4on4s]).astype(int)
+    OneHotEncoding = np.asarray([encoded1on4s,encoded2on4s,encoded3on4s,encoded4on4s]).astype(int)
     return OneHotEncoding
 
 

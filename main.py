@@ -23,7 +23,7 @@ np.random.shuffle(dataset)
 
 real_value_columns_cerevisiae = data[:, [7, 8, 9, 10, 11, 18, 19, 20]]
 
-ohe_cerevisiae = cleanDataset.encodeRealColumns(real_value_columns_cerevisiae)
+encoded_cerevisiae = cleanDataset.encodeRealColumns(real_value_columns_cerevisiae)
 
 X = []
 for i in range(6):
@@ -31,7 +31,7 @@ for i in range(6):
 
 for i in range(8):
     for j in range(4):
-        X.append(ohe_cerevisiae[j][i])
+        X.append(encoded_cerevisiae[j][i])
 
 X_cerevisiae = np.asarray(X).transpose().astype(float)
 y_cerevisiae = data[:, -1].astype(int)
@@ -47,7 +47,7 @@ Mikatae[nans] = 0
 
 real_value_columns_mikatae = Mikatae[:, [6, 7, 8, 9, 10, 11, 12, 13]]
 
-ohe_mikatae = cleanDataset.encodeRealColumns(real_value_columns_mikatae)
+encoded_mikatae = cleanDataset.encodeRealColumns(real_value_columns_mikatae)
 
 X_mikatae = []
 
@@ -56,7 +56,7 @@ for i in range(6):
 
 for i in range(8):
     for j in range(4):
-        X_mikatae.append(ohe_mikatae[j][i])
+        X_mikatae.append(encoded_mikatae[j][i])
 
 X_mikatae = np.asarray(X_mikatae).transpose()
 
@@ -79,17 +79,17 @@ BerNB.fit(X_cerevisiae,y_cerevisiae)
 predCer = BerNB.predict(X_cerevisiae)
 prediction_mikatae = BerNB.predict(X_mikatae)
 
-countzerosmikatae = 0
+countZerosMikatae = 0
 for i in prediction_mikatae:
     if i == 0:
-        countzerosmikatae += 1
+        countZerosMikatae += 1
 
 print('-----------------------------------------------')
 print('predicted non essential mikatae:')
-print(countzerosmikatae,'(',countzerosmikatae/len(prediction_mikatae), ')')
+print(countZerosMikatae,'(',countZerosMikatae/len(prediction_mikatae), ')')
 print('-----------------------------------------------')
 print('predicted essential mikatae:')
-print(len(prediction_mikatae) - countzerosmikatae , '(',(len(prediction_mikatae) - countzerosmikatae)/len(prediction_mikatae), ')')
+print(len(prediction_mikatae) - countZerosMikatae , '(',(len(prediction_mikatae) - countZerosMikatae)/len(prediction_mikatae), ')')
 
 
 
